@@ -1,0 +1,207 @@
+/*
+ * Figma footer: 1366×492 (#442808 + bean photo at 80% opacity, clipped). Columns start 162px from the top:
+ * brand 380px · About 136px · Company 134px · Contact 332px, always 66px apart; 72px below the columns.
+ */
+.footer {
+  --focus-ring: var(--color-gold);
+  position: relative;
+  padding: 162px 0 0px;
+  isolation: isolate; /* the bean photo blends against this footer's own background only */
+  background: var(--color-brown-deep);
+  color: var(--color-white);
+  overflow: hidden;
+}
+
+/* Photo box is 698px tall in Figma but only its top 492px show; keep it at least that tall when the footer grows. */
+.beans {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: max(698px, 100%);
+  opacity: 0.8;
+  mix-blend-mode: overlay; /* Figma image paint: blend mode "Overlay", 80% opacity */
+}
+
+.beansImage {
+  object-fit: cover;
+  object-position: center top;
+}
+
+.grid {
+  position: relative;
+  z-index: 1;
+  display: grid;
+  grid-template-columns: minmax(0, 380px) max-content max-content minmax(0, 332px);
+  justify-content: space-between;
+  column-gap: 40px;
+  align-items: start;
+}
+
+/* ---- Brand column: 54px script logo, 14/22 description (123px), 24px icons 20px apart */
+.logo {
+  font-family: var(--font-script);
+  font-size: 54px;
+  line-height: 1.3148; /* 71px */
+}
+
+.description {
+  min-height: 123px;
+  margin-top: 20px;
+  font-size: 14px;
+  line-height: 22px;
+}
+
+.social {
+  display: flex;
+  gap: 20px;
+  margin-top: 20px;
+}
+
+.socialLink {
+  display: block;
+  width: 24px;
+  height: 24px;
+  transition: opacity 0.2s ease;
+}
+
+.socialLink:hover {
+  opacity: 0.7;
+}
+
+/* ---- Link columns */
+.heading {
+  font-size: 26px;
+  font-weight: 700;
+  line-height: 1.3333; /* 35px */
+}
+
+.about .heading,
+.company .heading {
+  margin-bottom: 55px;
+}
+
+.list li {
+  font-size: 18px;
+  line-height: 42px;
+}
+
+.link {
+  transition: color 0.2s ease;
+}
+
+.link:hover {
+  color: var(--color-gold);
+}
+
+/* ---- Contact column: 18px items, 22px apart */
+.contact .heading {
+  margin-bottom: 31px;
+}
+
+.contactList {
+  display: flex;
+  flex-direction: column;
+  gap: 22px;
+}
+
+.contactList li {
+  font-size: 18px;
+  line-height: 24px;
+}
+
+.address {
+  min-height: 54px;
+}
+.power{
+  text-align: center;
+    background: #281702;
+    margin-top: 30px;
+    padding: 10px 0px;
+}
+
+
+
+/* ------------------------------------------------------------------ Tablet */
+@media (max-width: 1023px) {
+  .footer {
+    padding: 72px 0 56px;
+  }
+
+  .grid {
+    grid-template-columns: repeat(3, max-content);
+    row-gap: 48px;
+  }
+
+  .brand {
+    grid-column: 1 / -1;
+    max-width: 520px;
+  }
+
+  .description {
+    min-height: 0;
+  }
+
+  .about .heading,
+  .company .heading {
+    margin-bottom: 24px;
+  }
+
+  .contact .heading {
+    margin-bottom: 20px;
+  }
+
+  .contactList {
+    gap: 14px;
+  }
+
+  .contact {
+    max-width: 300px;
+  }
+}
+
+/* ------------------------------------------------------------------ Mobile */
+@media (max-width: 767px) {
+  .footer {
+    padding: 56px 0 48px;
+  }
+
+  .grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    column-gap: 24px;
+    row-gap: 40px;
+  }
+
+  .logo {
+    font-size: 44px;
+  }
+
+  .contact {
+    grid-column: 1 / -1;
+    max-width: none;
+  }
+
+  .heading {
+    font-size: 22px;
+  }
+
+  .list li {
+    font-size: 16px;
+    line-height: 38px;
+  }
+
+  .contactList li {
+    font-size: 16px;
+  }
+
+  .address {
+    min-height: 0;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .socialLink,
+  .link {
+    transition: none;
+  }
+}

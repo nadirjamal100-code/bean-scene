@@ -1,0 +1,108 @@
+/*
+ * Figma: 1366×574 band (photo + 80% #603809 overlay), 82px below the features.
+ * Copy block 575×304 is vertically centered at x=93. A 657×574 bean pile is anchored to the right edge
+ * (bleeding 124px past it) with a 300×467 cup on top at (+60, +54) of the pile.
+ */
+.cta {
+  --focus-ring: var(--color-gold);
+  position: relative;
+  display: flex;
+  align-items: center;
+  height: clamp(430px, 42.02vw, 574px);
+  margin-top: var(--section-gap);
+  overflow: hidden;
+  color: var(--color-white);
+}
+
+.background {
+  object-fit: cover;
+}
+
+.overlay {
+  position: absolute;
+  inset: 0;
+  background: var(--color-brown);
+  opacity: 0.8;
+}
+
+.content {
+  position: relative;
+  z-index: 1;
+}
+
+.copy {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  max-width: 575px;
+}
+
+.title {
+  font-size: var(--fs-h2);
+  font-weight: 700;
+  line-height: 1.3333;
+}
+
+.text {
+  margin: 22px 0;
+  padding-left: 4px; /* the paragraph sits 4px to the right of the heading in Figma */
+  font-size: var(--fs-lead);
+  line-height: 1.7;
+}
+
+/* Everything in the visual is sized in % of the bean pile so it scales as one piece. */
+.visual {
+  position: absolute;
+  top: 0;
+  right: 0;
+  height: 100%;
+  aspect-ratio: 657 / 574;
+  transform: translateX(18.87%); /* 124 / 657 */
+  pointer-events: none;
+}
+
+.beans {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.cup {
+  position: absolute;
+  top: 9.408%; /* 54 / 574 */
+  left: 9.132%; /* 60 / 657 */
+  width: 45.662%; /* 300 / 657 */
+  height: 81.359%; /* 467 / 574 */
+  object-fit: cover;
+  filter: drop-shadow(0 10px 12px rgba(0, 0, 0, 0.34));
+}
+
+/* ------------------------------------------------------------------ Tablet & mobile: copy above, visual below */
+@media (max-width: 1023px) {
+  .cta {
+    --visual-height: clamp(280px, 56vw, 400px);
+    display: block;
+    height: auto;
+    padding: 64px 0 var(--visual-height);
+  }
+
+  .visual {
+    top: auto;
+    bottom: 0;
+    height: var(--visual-height);
+  }
+
+  .text {
+    max-width: 520px;
+  }
+
+  .desktopBreak {
+    display: none;
+  }
+}
+
+@media (max-width: 767px) {
+  .cta {
+    padding-top: 48px;
+  }
+}

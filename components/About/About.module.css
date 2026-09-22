@@ -1,0 +1,109 @@
+/*
+ * Figma: 1180×484 row at y=850 (82px below the hero).
+ * Left column 585px (heading 54/72 → 29px → 5 lines of 20/34 → 29px → 48px button = 348px, centered),
+ * right column 500×484 masked photo; 95px gutter between the columns.
+ */
+.about {
+  position: relative;
+  padding-top: var(--section-gap);
+}
+
+/* Decorative coffee splash (Figma: 498×272 at x=-121, mirrored vertically), sits behind the content. */
+.splash {
+  position: absolute;
+  z-index: -1;
+  top: 421px;
+  left: -121px;
+  width: 498px;
+  height: auto;
+  transform: scaleY(-1);
+  pointer-events: none;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: minmax(0, 585fr) minmax(0, 500fr);
+  column-gap: clamp(40px, 6.955vw, 95px);
+  align-items: center;
+}
+
+.copy {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.title {
+  font-size: var(--fs-h2);
+  font-weight: 700;
+  line-height: 1.3333;
+  color: var(--color-brown);
+}
+
+.text {
+  margin: 29px 0;
+  font-size: var(--fs-lead);
+  line-height: 1.7;
+  color: var(--color-muted);
+}
+
+/*
+ * Figma mask: 500×484 rectangle clipping a 680×476 "cover" photo placed at (-59, -11).
+ * Expressed in percentages so the crop stays identical at every size.
+ */
+.media {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 500 / 484;
+  overflow: hidden;
+  /* Figma image paint uses blend mode "Multiply": white photo areas melt into the page colour. */
+  isolation: isolate;
+  background: var(--color-bg);
+}
+
+.photo {
+  position: absolute;
+  top: -2.2727%; /* -11 / 484 */
+  left: -11.8%; /* -59 / 500 */
+  max-width: none; /* the photo is intentionally wider than its clipping mask */
+  width: 136%; /* 680 / 500 */
+  height: 98.3471%; /* 476 / 484 */
+  object-fit: cover;
+  mix-blend-mode: multiply;
+}
+
+/* ------------------------------------------------------------------ Tablet & mobile */
+@media (max-width: 1023px) {
+  .splash {
+    top: auto;
+    bottom: -60px;
+    left: -180px;
+    width: 400px;
+    opacity: 0.9;
+  }
+
+  .grid {
+    grid-template-columns: minmax(0, 1fr);
+    row-gap: 40px;
+  }
+
+  .text {
+    max-width: 640px;
+    margin: 20px 0 28px;
+  }
+
+  .media {
+    max-width: 500px;
+    margin-inline: auto;
+  }
+}
+
+@media (max-width: 767px) {
+  .splash {
+    display: none;
+  }
+
+  .text {
+    margin: 16px 0 24px;
+  }
+}

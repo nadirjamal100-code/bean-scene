@@ -1,0 +1,53 @@
+/*
+ * Figma card: 280×364 (fill #fff9f1, 1px inside stroke) with a 280×222 photo on top.
+ * Text block starts 14px under the photo (86px tall) and the 134×48 button is centered on the card's bottom edge.
+ */
+.card {
+  position: relative;
+  background: var(--color-cream);
+  box-shadow: inset 0 0 0 1px var(--color-outline);
+}
+
+.media {
+  position: relative;
+  aspect-ratio: 280 / 222;
+}
+
+.photo {
+  object-fit: cover;
+}
+
+.body {
+  padding: 14px 8px 42px;
+  text-align: center;
+}
+
+.name {
+  font-size: 22px;
+  font-weight: 700;
+  line-height: 29px;
+  color: var(--color-brown);
+}
+
+.blend {
+  margin-top: 6px;
+  font-size: 16px;
+  line-height: 21px;
+  color: var(--color-ink);
+}
+
+.price {
+  margin-top: 6px;
+  font-size: 18px;
+  font-weight: 700;
+  line-height: 24px;
+  color: var(--color-brown);
+}
+
+.order {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: -24px;
+  margin-inline: auto;
+}

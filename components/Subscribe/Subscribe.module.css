@@ -1,0 +1,93 @@
+/*
+ * Figma: 1366×374 band (photo + 80% #603809 overlay), 82px below the testimonial.
+ * 80px padding → heading (122px) → 26px → 66px form → 80px padding.
+ */
+.band {
+  --focus-ring: var(--color-gold);
+  position: relative;
+  margin-top: var(--section-gap);
+  padding: 80px 0;
+  color: var(--color-white);
+}
+
+.background {
+  object-fit: cover;
+}
+
+.overlay {
+  position: absolute;
+  inset: 0;
+  background: var(--color-brown);
+  opacity: 0.8;
+}
+
+.content {
+  position: relative;
+  z-index: 1;
+}
+
+.form {
+  margin-top: 26px;
+}
+
+/* Figma: two 444×358 cups at x=-147 and (mirrored) 159px past the right edge, 138px below the band's top. */
+.cup {
+  position: absolute;
+  z-index: 2;
+  top: 138px;
+  width: 444px;
+  height: auto;
+  pointer-events: none;
+}
+
+.cupLeft {
+  left: -147px;
+}
+
+.cupRight {
+  right: -159px;
+  transform: scaleX(-1);
+}
+
+@media (max-width: 1023px) {
+  .band {
+    padding: 64px 0;
+  }
+
+  .cup {
+    top: auto;
+    bottom: -90px;
+    width: 300px;
+  }
+
+  .cupLeft {
+    left: -170px;
+  }
+
+  .cupRight {
+    right: -170px;
+  }
+}
+
+@media (max-width: 767px) {
+  .band {
+    padding: 48px 0 56px;
+  }
+
+  .form {
+    margin-top: 24px;
+  }
+
+  .cup {
+    width: 200px;
+    bottom: -60px;
+  }
+
+  .cupLeft {
+    left: -125px;
+  }
+
+  .cupRight {
+    right: -125px;
+  }
+}

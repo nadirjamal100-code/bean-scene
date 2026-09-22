@@ -1,0 +1,25 @@
+/* Figma: 980px wide block — title 54/72 Bold #603809, then 16px gap, then 20/34 Regular #707070 */
+.heading {
+  max-width: 980px;
+  margin-inline: auto;
+  text-align: center;
+}
+
+.title {
+  font-size: var(--fs-h2);
+  font-weight: 700;
+  line-height: 1.3333;
+  color: var(--color-brown);
+}
+
+.subtitle {
+  margin-top: 16px;
+  font-size: var(--fs-lead);
+  line-height: 1.7;
+  color: var(--color-muted);
+}
+
+.light .title,
+.light .subtitle {
+  color: var(--color-white);
+}

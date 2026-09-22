@@ -1,0 +1,127 @@
+/*
+ * Figma hero: 1366×768 photo + left-to-right dark gradient.
+ * Copy block starts at y=183 and ends at y=673 → vertically centered in the space below the 88px nav.
+ */
+.hero {
+  --focus-ring: var(--color-gold);
+  --script-size: clamp(140px, 16.105vw, 220px);
+  position: relative;
+  display: flex;
+  align-items: center;
+  min-height: 768px;
+  padding-top: var(--nav-height);
+  overflow: hidden;
+  color: var(--color-white);
+}
+
+.background {
+  object-fit: cover;
+  object-position: center;
+}
+
+/*
+ * Figma overlay: linear gradient #1e1e1e (100%) → #000 (0%). Its gradient transform maps the
+ * ramp to t = 1.057·x + 0.076, i.e. 92% opaque at the left edge fading to clear at 87.4% of the
+ * width. Stops are written out so the result matches Figma's non-premultiplied interpolation.
+ */
+.overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    90deg,
+    rgba(28, 28, 28, 0.924) 0%,
+    rgba(24, 24, 24, 0.792) 12.5%,
+    rgba(20, 20, 20, 0.66) 25%,
+    rgba(16, 16, 16, 0.528) 37.5%,
+    rgba(12, 12, 12, 0.396) 50%,
+    rgba(8, 8, 8, 0.263) 62.5%,
+    rgba(4, 4, 4, 0.131) 75%,
+    rgba(0, 0, 0, 0) 87.4%
+  );
+}
+
+.content {
+  position: relative;
+  z-index: 1;
+}
+
+.copy {
+  max-width: 527px;
+}
+
+.title {
+  font-weight: 500;
+}
+
+.eyebrow {
+  display: block;
+  font-size: clamp(18px, 1.61vw, 22px);
+  font-weight: 500;
+  line-height: 1.3182; /* 29px @ 22px */
+}
+
+.script {
+  display: block;
+  font-family: var(--font-script);
+  font-size: var(--script-size);
+  font-weight: 400;
+  line-height: 1.3227; /* 291px @ 220px */
+}
+
+.text {
+  margin-bottom: 20px;
+  font-size: 20px;
+  line-height: 34px;
+}
+
+/* ------------------------------------------------------------------ Tablet */
+@media (max-width: 1023px) {
+  .hero {
+    --script-size: clamp(150px, 24vw, 200px);
+    min-height: 680px;
+  }
+
+  .background {
+    object-position: 68% center;
+  }
+
+  .eyebrow {
+    font-size: 20px;
+  }
+
+  .text {
+    max-width: 480px;
+    font-size: 18px;
+    line-height: 30px;
+  }
+
+  .desktopBreak {
+    display: none;
+  }
+}
+
+/* ------------------------------------------------------------------ Mobile */
+@media (max-width: 767px) {
+  .hero {
+    --script-size: clamp(104px, 33vw, 140px);
+    min-height: 640px;
+  }
+
+  .background {
+    object-position: 72% center;
+  }
+
+  /* Copy spans most of the width on phones, so use a more even scrim for legibility. */
+  .overlay {
+    background: linear-gradient(90deg, rgba(28, 28, 28, 0.9) 0%, rgba(20, 20, 20, 0.62) 100%);
+  }
+
+  .eyebrow {
+    font-size: 18px;
+  }
+
+  .text {
+    font-size: 16px;
+    line-height: 27px;
+  }
+}

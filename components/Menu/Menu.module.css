@@ -1,0 +1,60 @@
+/* Figma: heading (122px) → 32px → four 280×388 cards (364 + 24px overhanging button), 20px gaps. */
+.menu {
+  position: relative;
+  padding-top: var(--section-gap);
+}
+
+/* Decorative splash (Figma: 478×261 at x=993, rotated 180°), sits behind the cards. */
+.splash {
+  position: absolute;
+  z-index: -1;
+  top: 590px;
+  right: -105px;
+  width: 478px;
+  height: auto;
+  transform: rotate(180deg);
+  pointer-events: none;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 0 20px;
+  margin-top: 32px;
+}
+
+.item {
+  padding-bottom: 24px; /* room for the overhanging button */
+}
+
+@media (max-width: 1023px) {
+  .splash {
+    top: auto;
+    bottom: -40px;
+    right: -200px;
+    width: 400px;
+  }
+
+  .grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 16px 20px;
+  }
+}
+
+@media (max-width: 599px) {
+  .splash {
+    display: none;
+  }
+
+  .grid {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 12px;
+    margin-top: 28px;
+  }
+
+  .item {
+    max-width: 380px;
+    width: 100%;
+    margin-inline: auto;
+  }
+}

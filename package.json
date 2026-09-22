@@ -1,0 +1,26 @@
+{
+  "name": "bean-scene",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Bean Scene coffee landing page — implemented from the Figma community file",
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "typecheck": "tsc --noEmit"
+  },
+  "dependencies": {
+    "next": "^15.5.0",
+    "react": "^19.1.0",
+    "react-dom": "^19.1.0"
+  },
+  "devDependencies": {
+    "@types/node": "^22.0.0",
+    "@types/react": "^19.1.0",
+    "@types/react-dom": "^19.1.0",
+    "typescript": "^5.6.0"
+  },
+  "engines": {
+    "node": ">=18.18"
+  }
+}
